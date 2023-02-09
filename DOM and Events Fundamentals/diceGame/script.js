@@ -10,12 +10,15 @@ const newBtn = document.querySelector(".btn--new");
 const rollBtn = document.querySelector(".btn--roll");
 const holdBtn = document.querySelector(".btn--hold");
 
+// Game Values
+let diceVa = 0;
 let currentScore0Va = 0;
 let currentScore1Va = 0;
 let score0Va = 0;
 let score1Va = 0;
 let currentPlayer = 1;
-// Starting Conditions
+
+// Starting Conditions & restart function
 let start = function () {
   currentPlayer = 1;
   score0Va = 0;
@@ -29,11 +32,6 @@ let start = function () {
   currentScore0.textContent = 0;
   currentScore1.textContent = 0;
 };
-
-let diceVa = 0;
-// let diceRoll = function () {
-//   Math.trunc(Math.random() * 6) + 1;
-// };
 
 start();
 // New Game
@@ -57,14 +55,25 @@ rollBtn.addEventListener("click", function () {
   // currentScore0.textContent = 5;
   // currentScore1.textContent = 5;
   if (diceVa === 1) {
+    if (currentPlayer === 1) {
+      score0Va = 0;
+      score0El.textContent = score0Va;
+      currentPlayer = 2;
+      console.log("player 2");
+    } else {
+      score1Va = 0;
+      score1El.textContent = score1Va;
+      currentPlayer = 1;
+      console.log("player 1");
+    }
     console.log("number 1");
   } else {
     if (currentPlayer === 1) {
-      currentScore0Va += diceVa;
-      currentScore0.textContent = currentScore0Va;
+      score0Va += diceVa;
+      score0El.textContent = score0Va;
     } else if (currentPlayer === 2) {
-      currentScore1Va += diceVa;
-      currentScore1.textContent = currentScore1Va;
+      score1Va += diceVa;
+      score1El.textContent = score1Va;
     }
   }
 });
@@ -73,9 +82,19 @@ rollBtn.addEventListener("click", function () {
 
 holdBtn.addEventListener("click", function () {
   if (currentPlayer === 1) {
+    currentScore0Va += score0Va;
+    currentScore0.textContent = currentScore0Va;
+    score0Va = 0;
+    score0El.textContent = score0Va;
+
     currentPlayer = 2;
     console.log("Player 2");
   } else {
+    currentScore1Va += score1Va;
+    currentScore1.textContent = currentScore1Va;
+    score1Va = 0;
+    score1El.textContent = score1Va;
+
     currentPlayer = 1;
     console.log("Player 1");
   }
