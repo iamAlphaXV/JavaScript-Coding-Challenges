@@ -29,8 +29,19 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  orderDelivery: function ({ starterIndex, mainIndex, address, time }) {
+    console.log(
+      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
 
+restaurant.orderDelivery({
+  time: "22:30",
+  address: "Sangre Grande",
+  mainIndex: 2,
+  starterIndex: 2,
+});
 // //Destructuring and array
 // const arr = [5, 7, 9];
 // console.log(arr);
@@ -87,14 +98,52 @@ const restaurant = {
 // =========================================================================
 // Destructuring Objects
 // creating variables from objects
-const { name, openingHours, categories } = restaurant;
+// const { name, openingHours, categories } = restaurant;
 
-console.log(name, openingHours, categories);
+// console.log(name, openingHours, categories);
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
 
-console.log(restaurantName, hours, tags);
+// console.log(restaurantName, hours, tags);
+
+// // mutating values
+// let a = 111;
+// let b = 999;
+
+// const obj = { a: 12, b: 34, c: 56 };
+
+// console.log(a, b, obj.c);
+
+// // cannot start with prerenthises so wraped in brackets
+// ({ a, b } = obj);
+
+// console.log(a, b, obj.c);
+
+// // Nested Objects
+
+// const {
+//   fri: { open, close },
+// } = openingHours;
+// // console.log(fri);
+// console.log(open, close);
+
+const arr = [7, 9, 3];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+console.log(...arr);
+
+let newMenu = [...restaurant.mainMenu];
+console.log(newMenu);
+console.log(...newMenu);
+newMenu = [...restaurant.mainMenu, "pasta", "raviolli"];
+console.log(newMenu);
+console.log(...newMenu);
