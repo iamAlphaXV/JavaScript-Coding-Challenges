@@ -34,6 +34,14 @@ const restaurant = {
       `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
 };
 
 restaurant.orderDelivery({
@@ -42,6 +50,8 @@ restaurant.orderDelivery({
   mainIndex: 2,
   starterIndex: 2,
 });
+
+restaurant.orderPasta("mozerella", "cheddar", "sharp");
 // //Destructuring and array
 // const arr = [5, 7, 9];
 // console.log(arr);
@@ -131,19 +141,101 @@ restaurant.orderDelivery({
 // // console.log(fri);
 // console.log(open, close);
 
-const arr = [7, 9, 3];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7, 9, 3];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-console.log(...newArr);
-console.log(...arr);
+// console.log(...newArr);
+// console.log(...arr);
 
-let newMenu = [...restaurant.mainMenu];
-console.log(newMenu);
-console.log(...newMenu);
-newMenu = [...restaurant.mainMenu, "pasta", "raviolli"];
-console.log(newMenu);
-console.log(...newMenu);
+// let newMenu = [...restaurant.mainMenu];
+// console.log(newMenu);
+// console.log(...newMenu);
+// newMenu = [...restaurant.mainMenu, "pasta", "raviolli"];
+// console.log(newMenu);
+// console.log(...newMenu);
+
+// // Copy arry
+
+// const mainMenuCopy = [...restaurant.mainMenu];
+// console.log(mainMenuCopy);
+
+// // join 2 arrays
+// const menu1 = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menu1);
+// console.log(...menu1);
+
+// // itearbles: arrays, strings , maps , sets and not objects
+
+// const str = "Jonas";
+// console.log(...str);
+// const letters = [...str, "", "s"];
+// console.log(letters);
+
+// //real world example
+// // const ingredients = [
+// //   prompt("lets make pasta, ingredient 1"),
+// //   prompt("ingredient 2"),
+// //   prompt("ingredient 3"),
+// // ];
+
+// // console.log(ingredients);
+// // restaurant.orderPasta(...ingredients);
+
+// // Objestcts
+// const newRestaurant = { ...restaurant, founder: "nicole", fame: "Global" };
+// console.log(newRestaurant);
+// console.log(...newRestaurant);
+
+// ==============================================================================
+// recap of spread array
+
+const arr = [1, 2, ...[3, 4]];
+
+console.log(arr);
+
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+console.log(a, b, others);
+
+const [Pizza, , Risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+console.log(otherFood);
+
+// Objects
+
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(weekDays);
+
+// Functions
+
+const addSum = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+addSum(2, 3);
+addSum(4, 5, 7, 8);
+addSum(17, 89, 73);
+
+const addArr = function (...numbers1) {
+  console.log(numbers1);
+};
+
+addArr(4, 5, 7, 8);
+addArr(12, 34, 56, 78);
+addArr(123, 456, 789);
+
+const x = [23, 5, 7];
+
+addSum(...x);
+
+// Live Example
+restaurant.orderPizza("mushrooms", "onions", "olives ");
