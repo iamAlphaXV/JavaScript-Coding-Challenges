@@ -193,49 +193,86 @@ restaurant.orderPasta("mozerella", "cheddar", "sharp");
 // ==============================================================================
 // recap of spread array
 
-const arr = [1, 2, ...[3, 4]];
+// const arr = [1, 2, ...[3, 4]];
 
-console.log(arr);
+// console.log(arr);
 
-const [a, b, ...others] = [1, 2, 3, 4, 5];
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
 
-console.log(a, b, others);
+// console.log(a, b, others);
 
-const [Pizza, , Risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
+// const [Pizza, , Risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
 
-console.log(otherFood);
+// console.log(otherFood);
 
-// Objects
+// // Objects
 
-const { sat, ...weekDays } = restaurant.openingHours;
-console.log(weekDays);
+// const { sat, ...weekDays } = restaurant.openingHours;
+// console.log(weekDays);
 
-// Functions
+// // Functions
 
-const addSum = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
+// const addSum = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+
+// addSum(2, 3);
+// addSum(4, 5, 7, 8);
+// addSum(17, 89, 73);
+
+// const addArr = function (...numbers1) {
+//   console.log(numbers1);
+// };
+
+// addArr(4, 5, 7, 8);
+// addArr(12, 34, 56, 78);
+// addArr(123, 456, 789);
+
+// const x = [23, 5, 7];
+
+// addSum(...x);
+
+// // Live Example
+// restaurant.orderPizza("mushrooms", "onions", "olives ");
+
+// ShowrtCuircuting
+
+// Or Operator
+
+console.log(3 || "Jonas");
+
+restaurant.numGuests = 21;
+
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+
+console.log(guest1);
+
+const guest2 = restaurant.numGuests || 12;
+
+console.log(guest2);
+
+// Live example
+
+const rest1 = {
+  name: "La Piazza",
+  numGuests: 20,
 };
 
-addSum(2, 3);
-addSum(4, 5, 7, 8);
-addSum(17, 89, 73);
-
-const addArr = function (...numbers1) {
-  console.log(numbers1);
+const rest2 = {
+  name: "Capri",
+  owner: "Joey",
 };
 
-addArr(4, 5, 7, 8);
-addArr(12, 34, 56, 78);
-addArr(123, 456, 789);
+rest1.numGuests = rest1.numGuests || 10;
+rest2.numGuests = rest2.numGuests || 10;
 
-const x = [23, 5, 7];
+rest1.numGuests ||= 20;
+rest2.numGuests ||= 20;
 
-addSum(...x);
-
-// Live Example
-restaurant.orderPizza("mushrooms", "onions", "olives ");
+console.log(rest1);
+console.log(rest2);
